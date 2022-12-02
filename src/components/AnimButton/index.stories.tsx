@@ -6,7 +6,30 @@ export default {
   title: "components/AnimButton",
 };
 
-export const Basic = () => {
+export const AnimateOnly = () => {
+  return (
+    <Container
+      initial={{ scale: 0.5, x: 0, y: 0, rotate: 180 }}
+      animate={{ scale: 1.2, x: 50, y: 50, rotate: 0 }}
+    >
+      Animate Only
+    </Container>
+  );
+};
+
+export const AnimateOnlyWithTransitionProps = () => {
+  return (
+    <Container
+      initial={{ scale: 0.5, x: 0, y: 0, rotate: 180 }}
+      animate={{ scale: 1.2, x: 50, y: 50, rotate: 0 }}
+      transition={{ type: "spring", stiffness: 100, mass: 1 }}
+    >
+      Animate Only
+    </Container>
+  );
+};
+
+export const Events = () => {
   return (
     <Container
       initial={{ background: "#666" }}
