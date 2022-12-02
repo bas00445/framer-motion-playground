@@ -9,8 +9,8 @@ export const Keyframe = () => {
   return (
     <Container
       animate={{
-        x: [0, 200, 200, 0, 0],
-        y: [0, 0, 200, 200, 0],
+        x: [0, 300, 300, 0, 0],
+        y: [0, 0, 300, 300, 0],
         borderRadius: ["0%", "50%", "0%", "50%", "0%"],
         backgroundColor: [
           "#ff2701",
@@ -29,6 +29,6 @@ export const Keyframe = () => {
 };
 
 const Container = styled(motion.div)`
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
 `;
