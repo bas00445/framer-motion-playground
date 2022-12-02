@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Container } from "./styled";
 
 export default {
-  title: "components/AnimButton",
+  title: "components/Basic",
 };
 
 export const AnimateOnly = () => {
