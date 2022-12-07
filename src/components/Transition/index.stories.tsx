@@ -12,7 +12,12 @@ export const MountedAnimation = () => {
 
   return (
     <>
-      <button onClick={() => setIsVisible(!isVisible)}>Toggle</button>
+      <button
+        className="mb-4 bg-red-500 p-2"
+        onClick={() => setIsVisible(!isVisible)}
+      >
+        Toggle
+      </button>
       <AnimatePresence>
         {isVisible && (
           <motion.div
