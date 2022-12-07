@@ -18,7 +18,7 @@ export const ToggleElements = () => {
         <AnimatePresence>
           {isOpen ? (
             <motion.div
-              key="open"
+              key="open" // Need `key`
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
@@ -33,7 +33,7 @@ export const ToggleElements = () => {
             </motion.div>
           ) : (
             <motion.div
-              key="close"
+              key="close" // Need `key`
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
