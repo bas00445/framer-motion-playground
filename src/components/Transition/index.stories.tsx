@@ -7,7 +7,29 @@ export default {
   title: "components/Transition",
 };
 
-export const ToggleElements = () => {
+export const MountedAnimation = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  return (
+    <>
+      <button onClick={() => setIsVisible(!isVisible)}>Toggle</button>
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ background: "black", color: "white" }}
+          >
+            This is content
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+export const ToggleBetweenElements = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
