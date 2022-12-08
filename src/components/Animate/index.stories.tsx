@@ -79,7 +79,7 @@ export const AnimateUsingControl = () => {
   }, []);
 
   return (
-    <motion.div>
+    <>
       <motion.div
         style={{
           display: "flex",
@@ -112,6 +112,6 @@ export const AnimateUsingControl = () => {
       >
         Element B
       </motion.div>
-    </motion.div>
+    </>
   );
 };
