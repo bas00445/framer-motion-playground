@@ -15,12 +15,11 @@ export const TabsWithUnderline = () => {
       {items.map((item, index) => (
         <div key={item} onClick={() => setActiveTabIndex(index)}>
           <motion.div
-            style={{ padding: 12 }}
+            style={{ padding: 12, cursor: "pointer" }}
             initial={{ color: "#000", background: "#fff", borderRadius: 0 }}
             animate={{
               background: activeTabIndex === index ? "#ffa5a7" : "#fff",
             }}
-            whileHover={{ background: "#f6f6f6", borderRadius: 8 }}
           >
             {item}
           </motion.div>

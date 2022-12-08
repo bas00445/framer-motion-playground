@@ -34,45 +34,45 @@ export const MountedAnimation = () => {
   );
 };
 
+export const CustomElement = styled(motion.div)`
+  color: white;
+  padding: 12px;
+  background: black;
+  position: absolute;
+`;
+
 export const ToggleBetweenElements = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
+      <button
+        className="p-2 mb-2 border-[1px] border-red-500"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        Click to toggle
+      </button>
 
       <div style={{ position: "relative" }}>
         <AnimatePresence>
           {isOpen ? (
-            <motion.div
+            <CustomElement
               key="open" // Need `key`
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
-              style={{
-                color: "white",
-                padding: 12,
-                background: "black",
-                position: "absolute",
-              }}
             >
-              Open
-            </motion.div>
+              Element 1
+            </CustomElement>
           ) : (
-            <motion.div
+            <CustomElement
               key="close" // Need `key`
               initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
+              animate={{ opacity: 1, scale: 1, background: "#db2f2f" }}
               exit={{ opacity: 0, scale: 0 }}
-              style={{
-                color: "white",
-                padding: 12,
-                background: "black",
-                position: "absolute",
-              }}
             >
-              Close
-            </motion.div>
+              Element 2
+            </CustomElement>
           )}
         </AnimatePresence>
       </div>
