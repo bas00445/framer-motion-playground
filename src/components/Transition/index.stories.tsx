@@ -79,3 +79,34 @@ export const ToggleBetweenElements = () => {
     </>
   );
 };
+
+export const CarouselExample = () => {
+  const items = ["Item #1", "Item #2", "Item #3"];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <div className="relative">
+      <AnimatePresence>
+        {items.map(
+          (item, index) =>
+            activeIndex === index && (
+              <Item key={`${item}-${index}`}>{item}</Item>
+            )
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export const Item = styled(motion.div)`
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+`;
