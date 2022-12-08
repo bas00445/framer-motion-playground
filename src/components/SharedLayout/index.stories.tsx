@@ -17,6 +17,9 @@ export const TabsWithUnderline = () => {
           <motion.div
             style={{ padding: 12 }}
             initial={{ color: "#000", background: "#fff", borderRadius: 0 }}
+            animate={{
+              background: activeTabIndex === index ? "#ffa5a7" : "#fff",
+            }}
             whileHover={{ background: "#f6f6f6", borderRadius: 8 }}
           >
             {item}
@@ -24,9 +27,12 @@ export const TabsWithUnderline = () => {
           {activeTabIndex === index && (
             <motion.div
               layoutId="underline"
-              style={{ width: "100%", height: "2px" }}
-              initial={false}
-              animate={{ background: "#931010" }}
+              style={{
+                width: "100%",
+                height: "2px",
+                marginTop: "4px",
+                background: "#931010",
+              }}
             />
           )}
         </div>
