@@ -6,6 +6,7 @@ import {
   animate,
   useMotionValue,
   useAnimationControls,
+  useTransform,
 } from "framer-motion";
 import styled from "@emotion/styled";
 
@@ -52,9 +53,30 @@ export const AnimateMotionValue = () => {
   );
 };
 
+export const AnimateUseTransform = () => {
+  const x = useMotionValue(0);
+  const y = useTransform(x, [0, 100, 200], [50, 100, 200]);
+  const scale = useTransform(x, [0, 100, 200], [0.5, 1, 3]);
+
+  useEffect(() => {
+    animate(x, 200);
+  }, []);
+
+  return (
+    <>
+      <motion.div
+        className="bg-red-500 rounded-full w-[50px] h-[50px]"
+        style={{ x, y, scale }}
+      />
+    </>
+  );
+};
+
 export const AnimateUsingControl = () => {
   const controlA = useAnimationControls();
   const controlB = useAnimationControls();
+
+  controlA.stop();
 
   const sequenceAnim = async () => {
     await controlA.start({
