@@ -143,3 +143,52 @@ const Item = styled(motion.div)`
   color: white;
   font-size: 24px;
 `;
+
+export const TodoList = () => {
+  const [items, setItems] = useState<any[]>([]);
+
+  const handleClickAdd = () => {
+    setItems([...items, { id: Date.now(), label: "Item" }]);
+  };
+
+  const handleClickRemoveItem = (index: number) => {
+    const newItems = [...items];
+    newItems.splice(index, 1);
+
+    setItems(newItems);
+  };
+
+  return (
+    <>
+      <button
+        className="mb-4 bg-green-700 text-white p-2"
+        onClick={handleClickAdd}
+      >
+        Add Item
+      </button>
+
+      <div className="flex flex-col gap-2">
+        <AnimatePresence>
+          {items.map((item, index) => (
+            <motion.div
+              layout
+              key={item.id}
+              onClick={() => handleClickRemoveItem(index)}
+              style={{
+                background: "black",
+                color: "white",
+                padding: "12px",
+                cursor: "pointer",
+              }}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+            >
+              {item.label}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+    </>
+  );
+};
