@@ -85,17 +85,50 @@ export const CarouselExample = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const handleClickPrevious = () => {
+    if (activeIndex >= 1) {
+      setActiveIndex(activeIndex - 1);
+    }
+  };
+
+  const handleClickNext = () => {
+    if (activeIndex < items.length - 1) {
+      setActiveIndex(activeIndex + 1);
+    }
+  };
+
   return (
-    <div className="relative">
-      <AnimatePresence>
-        {items.map(
-          (item, index) =>
-            activeIndex === index && (
-              <Item key={`${item}-${index}`}>{item}</Item>
-            )
-        )}
-      </AnimatePresence>
-    </div>
+    <>
+      <button
+        className="bg-gray-800 text-white mb-4 p-2 mr-2"
+        onClick={handleClickPrevious}
+      >
+        Previous slide
+      </button>
+      <button
+        className="bg-gray-800 text-white mb-4 p-2"
+        onClick={handleClickNext}
+      >
+        Next slide
+      </button>
+      <div className="relative">
+        <AnimatePresence>
+          {items.map(
+            (item, index) =>
+              activeIndex === index && (
+                <Item
+                  key={`${item}-${index}`}
+                  initial={{ opacity: 0, x: 200 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -200 }}
+                >
+                  {item}
+                </Item>
+              )
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   );
 };
 
@@ -103,7 +136,7 @@ const Item = styled(motion.div)`
   width: 300px;
   height: 200px;
   position: absolute;
-  background: red;
+  background: #f3bf17;
   display: flex;
   justify-content: center;
   align-items: center;
