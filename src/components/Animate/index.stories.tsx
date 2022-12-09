@@ -125,7 +125,7 @@ export const AnimateUsingControl = () => {
           alignItems: "center",
         }}
         initial={{
-          x: -50,
+          x: -150,
           width: 100,
           background: "#fff",
           color: "#111",
