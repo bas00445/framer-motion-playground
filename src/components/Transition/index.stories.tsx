@@ -34,7 +34,7 @@ export const MountedAnimation = () => {
   );
 };
 
-export const CustomElement = styled(motion.div)`
+const CustomElement = styled(motion.div)`
   color: white;
   padding: 12px;
   background: black;
@@ -99,7 +99,7 @@ export const CarouselExample = () => {
   );
 };
 
-export const Item = styled(motion.div)`
+const Item = styled(motion.div)`
   width: 300px;
   height: 200px;
   position: absolute;
