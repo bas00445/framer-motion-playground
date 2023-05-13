@@ -137,3 +137,41 @@ export const AnimateUsingControl = () => {
     </>
   );
 };
+
+export const RenderingAnimateMotionValueOnScreen = () => {
+  const y = useMotionValue(0);
+
+  const [yState, setYState] = useState(y.get());
+
+  React.useEffect(() => {
+    animate(y, 100, {
+      duration: 2,
+      repeatType: "mirror",
+      repeat: Infinity,
+      onUpdate: (latest) => {
+        // console.log({ latest });
+      },
+    });
+  }, []);
+
+  React.useEffect(() => {
+    const unSubscribe = y.onChange((val) => setYState(val));
+    return () => unSubscribe();
+  }, [y]);
+
+  return (
+    <>
+      <motion.div
+        style={{
+          y,
+          width: 100,
+          background: "red",
+          color: "white",
+          textAlign: "center",
+        }}
+      >
+        {`y: ${yState.toFixed(0)}`}
+      </motion.div>
+    </>
+  );
+};
