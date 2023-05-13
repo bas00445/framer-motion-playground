@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import styled from "@emotion/styled";
 
 export default {
@@ -80,18 +80,35 @@ export const ToggleBetweenElements = () => {
   );
 };
 
+const nextAnim = {
+  initial: { opacity: 0, x: 300, scale: 1.2 },
+  animate: { opacity: 1, x: 0, scale: 1 },
+  exit: { opacity: 0 },
+};
+
+const backAnim = {
+  initial: { opacity: 0, x: -300, scale: 1.2 },
+  animate: { opacity: 1, x: 0, scale: 1 },
+  exit: { opacity: 0 },
+};
+
 export const CarouselExample = () => {
-  const items = ["Item #1", "Item #2", "Item #3"];
+  const items = ["Index #0", "Index #1", "Index #2"];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState("next");
 
   const handleClickPrevious = () => {
+    setDirection("back");
+
     if (activeIndex >= 1) {
       setActiveIndex(activeIndex - 1);
     }
   };
 
   const handleClickNext = () => {
+    setDirection("next");
+
     if (activeIndex < items.length - 1) {
       setActiveIndex(activeIndex + 1);
     }
@@ -100,32 +117,34 @@ export const CarouselExample = () => {
   return (
     <>
       <button
-        className="bg-gray-800 text-white mb-4 p-2 mr-2"
+        className="bg-gray-800 text-white mb-4 p-2 mr-2 rounded-lg"
         onClick={handleClickPrevious}
       >
         Previous slide
       </button>
       <button
-        className="bg-gray-800 text-white mb-4 p-2"
+        className="bg-gray-800 text-white mb-4 p-2 rounded-lg"
         onClick={handleClickNext}
       >
         Next slide
       </button>
       <div className="relative">
-        <AnimatePresence>
-          {items.map(
-            (item, index) =>
+        <div>{`activeIndex: ${activeIndex}, direction: ${direction}`}</div>
+        <AnimatePresence initial={false}>
+          {items.map((item, index) => {
+            const itemProps = direction === "next" ? nextAnim : backAnim;
+            return (
               activeIndex === index && (
                 <Item
                   key={`${item}-${index}`}
-                  initial={{ opacity: 0, x: 200 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -200 }}
+                  {...itemProps}
+                  transition={{ type: "spring", damping: 30, stiffness: 200 }}
                 >
                   {item}
                 </Item>
               )
-          )}
+            );
+          })}
         </AnimatePresence>
       </div>
     </>
@@ -136,6 +155,7 @@ const Item = styled(motion.div)`
   width: 300px;
   height: 200px;
   position: absolute;
+  border-radius: 8px;
   background: #f3bf17;
   display: flex;
   justify-content: center;
