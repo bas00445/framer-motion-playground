@@ -54,21 +54,32 @@ export const AnimateMotionValue = () => {
 };
 
 export const AnimateUseTransform = () => {
-  const x = useMotionValue(0);
-  const y = useTransform(x, [0, 100, 200], [50, 100, 200]);
-  const scale = useTransform(x, [0, 100, 200], [0.5, 1, 3]);
+  const progress = useMotionValue(0);
+  const scale = useTransform(progress, [0, 0.5, 1], [0.5, 1, 1.5]);
+  const background = useTransform(
+    progress,
+    [0, 0.5, 1],
+    ["#c54e4a", "#000000", "#276ac2"]
+  );
+  const borderRadius = useTransform(progress, [0, 0.5, 1], [0, 24, 100]);
 
   useEffect(() => {
-    animate(x, 200);
+    animate(progress, 1, {
+      type: "spring",
+      repeatType: "mirror",
+      repeat: Infinity,
+      stiffness: 160,
+      damping: 30,
+    });
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col justify-center p-10">
       <motion.div
-        className="bg-red-500 rounded-full w-[50px] h-[50px]"
-        style={{ x, y, scale }}
+        className="bg-red-500 w-[200px] h-[200px]"
+        style={{ scale, background, borderRadius }}
       />
-    </>
+    </div>
   );
 };
 

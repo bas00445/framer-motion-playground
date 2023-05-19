@@ -1,6 +1,7 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { motion } from "framer-motion";
 
 import { Container } from "./styled";
+import { useRef } from "react";
 
 export default {
   title: "components/Basic",
@@ -29,7 +30,7 @@ export const AnimateOnlyWithTransitionProps = () => {
   );
 };
 
-export const Events = () => {
+export const BasicEvents = () => {
   return (
     <Container
       initial={{ background: "#666" }}
@@ -38,6 +39,25 @@ export const Events = () => {
     >
       Click Me
     </Container>
+  );
+};
+
+export const DragEvents = () => {
+  const parentRef = useRef(null);
+
+  return (
+    <motion.div
+      ref={parentRef}
+      className="flex items-center p-5 border-black border"
+    >
+      <Container
+        whileDrag={{ scale: 1, opacity: 0.7 }}
+        drag="x"
+        dragConstraints={parentRef}
+      >
+        Drag Me
+      </Container>
+    </motion.div>
   );
 };
 
@@ -50,7 +70,7 @@ const variants = {
     background: "#000",
     color: "#fff",
   },
-  focus: {
+  tap: {
     background: "#000",
     color: "#fff",
     scale: 1.2,
@@ -63,7 +83,7 @@ export const Variants = () => {
       variants={variants}
       initial={variants.initial}
       whileHover={variants.hover}
-      whileTap={variants.focus}
+      whileTap={variants.tap}
     >
       Click Me
     </Container>
