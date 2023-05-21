@@ -46,38 +46,55 @@ export const DragEvents = () => {
   const parentRef = useRef(null);
 
   return (
-    <motion.div
-      ref={parentRef}
-      className="flex items-center p-5 border-black border"
-    >
-      <Container
-        whileDrag={{ scale: 1, opacity: 0.7 }}
-        drag="x"
-        dragConstraints={parentRef}
-      >
-        Drag Me
-      </Container>
-    </motion.div>
+    <div className="flex flex-col gap-4">
+      <div>
+        <div className="mb-4">Drag with parent constraint</div>
+        <motion.div
+          ref={parentRef}
+          className="flex items-center border-black border"
+        >
+          <Container
+            whileDrag={{ scale: 1, opacity: 0.7 }}
+            drag="x"
+            dragConstraints={parentRef}
+          >
+            Drag Me
+          </Container>
+        </motion.div>
+      </div>
+
+      <div>
+        <div className="mb-4">Drag with relative distance</div>
+        <Container
+          initial={{ background: "#5a16c0" }}
+          whileDrag={{ scale: 1, background: "#f21860" }}
+          drag
+          dragConstraints={{ top: -50, bottom: 50, left: -50, right: 50 }}
+        >
+          Drag Me
+        </Container>
+      </div>
+    </div>
   );
 };
 
-const variants = {
-  initial: {
-    background: "#a622a6ff",
-    color: "#fff",
-  },
-  hover: {
-    background: "#000",
-    color: "#fff",
-  },
-  tap: {
-    background: "#000",
-    color: "#fff",
-    scale: 1.2,
-  },
-};
-
 export const Variants = () => {
+  const variants = {
+    initial: {
+      background: "#a622a6ff",
+      color: "#fff",
+    },
+    hover: {
+      background: "#000",
+      color: "#fff",
+    },
+    tap: {
+      background: "#000",
+      color: "#fff",
+      scale: 1.2,
+    },
+  };
+
   return (
     <Container
       variants={variants}
