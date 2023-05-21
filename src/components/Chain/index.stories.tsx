@@ -14,31 +14,31 @@ export default {
   title: "components/Chain",
 };
 
-const variants = {
-  initial: {
-    opacity: 0,
-    scale: 0,
-  },
-  animate: {
-    opacity: 1,
-    scale: 1,
-  },
-};
-
-// ** Noted **: children's variant keys must be the same with parent variants
-const childrenVariants = {
-  initial: {
-    opacity: 0,
-    x: 50,
-  },
-  animate: {
-    opacity: 1,
-    x: 0,
-  },
-};
-
 export const BasicChainAnimation = () => {
   const items = ["Item #1", "Item #2", "Item #3", "Item #4", "Item #5"];
+
+  const variants = {
+    initial: {
+      opacity: 0,
+      scale: 0,
+    },
+    animate: {
+      opacity: 1,
+      scale: 1,
+    },
+  };
+
+  // ** Noted **: children's variant keys must be the same with parent variants
+  const childrenVariants = {
+    initial: {
+      opacity: 0,
+      x: 50,
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+    },
+  };
 
   return (
     <div className="w-[300px] h-[300px]">
@@ -62,7 +62,7 @@ export const BasicChainAnimation = () => {
             variants={childrenVariants}
             transition={{
               type: "spring",
-              stiffness: 150,
+              stiffness: 100,
               damping: 20,
             }}
           >
