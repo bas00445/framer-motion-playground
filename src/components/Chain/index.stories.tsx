@@ -15,11 +15,11 @@ export default {
 };
 
 const variants = {
-  start: {
+  initial: {
     opacity: 0,
     scale: 0,
   },
-  end: {
+  animate: {
     opacity: 1,
     scale: 1,
   },
@@ -27,11 +27,11 @@ const variants = {
 
 // ** Noted **: children's variant keys must be the same with parent variants
 const childrenVariants = {
-  start: {
+  initial: {
     opacity: 0,
-    x: 150,
+    x: 50,
   },
-  end: {
+  animate: {
     opacity: 1,
     x: 0,
   },
@@ -43,39 +43,27 @@ export const BasicChainAnimation = () => {
   return (
     <div className="w-[300px] h-[300px]">
       <motion.div
-        initial="start"
-        animate="end"
+        className="bg-[#ce6755] text-white p-6 rounded-3xl flex flex-col gap-3"
+        initial="initial"
+        animate="animate"
         variants={variants}
         transition={{
-          delayChildren: 0.3,
-          staggerChildren: 0.2,
+          delayChildren: 0.3, // wait for 0.3s then start animation of first child element
+          staggerChildren: 0.2, // each children will be delayed 0.2s then start animation of next child element
           type: "spring",
           stiffness: 100,
           damping: 20,
-        }}
-        style={{
-          background: "#ce6755",
-          color: "#ffffff",
-          padding: 24,
-          borderRadius: 24,
-          display: "flex",
-          flexDirection: "column",
-          gap: 12,
         }}
       >
         {items.map((item, index) => (
           <motion.div
             key={`${item}-${index}`}
-            className="p-4 rounded-sm"
+            className="p-4 rounded-sm bg-[#b34b0f] rounded-3xl"
             variants={childrenVariants}
             transition={{
               type: "spring",
-              stiffness: 100,
+              stiffness: 150,
               damping: 20,
-            }}
-            style={{
-              background: "#b34b0f",
-              borderRadius: 24,
             }}
           >
             {item}
