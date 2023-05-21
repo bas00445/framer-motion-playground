@@ -87,8 +87,6 @@ export const AnimateUsingControl = () => {
   const controlA = useAnimationControls();
   const controlB = useAnimationControls();
 
-  controlA.stop();
-
   const sequenceAnim = async () => {
     await controlA.start({
       x: 300,
