@@ -58,7 +58,7 @@ export const BasicChainAnimation = () => {
         {items.map((item, index) => (
           <motion.div
             key={`${item}-${index}`}
-            className="p-4 rounded-sm bg-[#b34b0f] rounded-3xl"
+            className="p-4 rounded-3xl bg-[#b34b0f]"
             variants={childrenVariants}
             transition={{
               type: "spring",
@@ -135,7 +135,7 @@ export const ChainWithTransition = () => {
             {items.map((item, index) => (
               <motion.div
                 key={`${item}-${index}`}
-                className="p-4 rounded-sm bg-[#b34b0f] rounded-3xl"
+                className="p-4 bg-[#b34b0f] rounded-3xl"
                 variants={childrenVariants}
                 transition={{
                   type: "spring",
