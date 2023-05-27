@@ -9,9 +9,13 @@ import {
   useTransform,
 } from "framer-motion";
 import styled from "@emotion/styled";
+import { randomColor } from "../../utils";
 
 export default {
   title: "components/Chain",
+  parameters: {
+    layout: "centered",
+  },
 };
 
 export const BasicChainAnimation = () => {
@@ -70,6 +74,68 @@ export const BasicChainAnimation = () => {
           </motion.div>
         ))}
       </motion.div>
+    </div>
+  );
+};
+
+export const RadialMenu = () => {
+  const [toggle, setToggle] = useState(true);
+
+  const radius = 120;
+  const numberOfItem = 10;
+
+  const items = Array.from({ length: numberOfItem }).map((_, i) => ({
+    label: i + 1,
+    background: randomColor(5),
+  }));
+
+  let gapInDegree = 360 / numberOfItem;
+  let degree = 0;
+
+  const sections = items.map((item) => {
+    const radian = (degree * Math.PI) / 180;
+    const coordX = radius * Math.cos(radian);
+    const coordY = radius * Math.sin(radian);
+    degree += gapInDegree;
+
+    return {
+      x: coordX,
+      y: coordY,
+      label: item.label,
+      background: item.background,
+    };
+  });
+
+  return (
+    <div className="flex flex-col items-center ">
+      <div className="relative">
+        <motion.div
+          className="bg-purple-600 text-white absolute w-[32px] h-[32px] text-sm rounded-full flex items-center justify-center cursor-pointer"
+          whileHover={{ scale: 1.2 }}
+          onClick={() => {
+            setToggle(!toggle);
+          }}
+        >
+          Click
+        </motion.div>
+        {sections.map((section, index) => (
+          <motion.div
+            key={`${section.label}-${index}`}
+            className="w-[32px] h-[32px] rounded-full absolute flex items-center justify-center text-white"
+            initial={{ opacity: 0, rotate: 90 }}
+            animate={{
+              x: section.x,
+              y: section.y,
+              background: section.background,
+              opacity: 1,
+              rotate: 0,
+            }}
+            transition={{ delay: index * 0.1 }}
+          >
+            {section.label}
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };
