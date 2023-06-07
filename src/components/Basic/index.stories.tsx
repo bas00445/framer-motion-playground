@@ -9,12 +9,13 @@ export default {
 
 export const AnimateOnly = () => {
   return (
-    <Container
-      initial={{ scale: 0.5, x: 0, y: 0, rotate: 180 }}
-      animate={{ scale: 1.2, x: 50, y: 50, rotate: 0 }}
+    <motion.button
+      style={{ color: "white", padding: 12 }}
+      initial={{ scale: 0, opacity: 0, background: "#c6242c" }}
+      animate={{ scale: 1, opacity: 1, background: "#1662d4" }}
     >
       Animate Only
-    </Container>
+    </motion.button>
   );
 };
 
