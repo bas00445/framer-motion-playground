@@ -56,12 +56,12 @@ export const AnimateMotionValue = () => {
 export const AnimateUseTransform = () => {
   const progress = useMotionValue(0);
   const scale = useTransform(progress, [0, 0.5, 1], [0.5, 1, 1.5]);
+  const borderRadius = useTransform(progress, [0, 0.5, 1], [0, 24, 100]);
   const background = useTransform(
     progress,
     [0, 0.5, 1],
     ["#c54e4a", "#000000", "#276ac2"]
   );
-  const borderRadius = useTransform(progress, [0, 0.5, 1], [0, 24, 100]);
 
   useEffect(() => {
     animate(progress, 1, {
