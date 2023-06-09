@@ -2,9 +2,18 @@ import { motion } from "framer-motion";
 
 import { Container } from "./styled";
 import { useRef } from "react";
+import "./index.css";
 
 export default {
   title: "components/Basic",
+};
+
+export const AnimateWithCSS = () => {
+  return (
+    <button style={{ color: "white", padding: 12 }} className="basic-anim">
+      CSS Only
+    </button>
+  );
 };
 
 export const AnimateOnly = () => {
