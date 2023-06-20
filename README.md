@@ -1,4 +1,4 @@
-This project is example usage of `framer-motion` library
+This project is example usage of [framer-motion](https://www.framer.com/motion/) library
 
 ### Installation
 
