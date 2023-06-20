@@ -1,7 +1,5 @@
 This project is example usage of `framer-motion` library
 
-![plot](./images/intro.png)
-
 ### Installation
 
 - `yarn install`
@@ -9,3 +7,5 @@ This project is example usage of `framer-motion` library
 ### Start Storybook
 
 - `yarn storybook`
+
+![plot](./images/intro.png)
