@@ -9,11 +9,7 @@ export default {
 };
 
 export const AnimateWithCSS = () => {
-  return (
-    <button style={{ color: "white", padding: 12 }} className="basic-anim">
-      CSS Only
-    </button>
-  );
+  return <button className="basic-anim">CSS Only</button>;
 };
 
 export const AnimateOnly = () => {

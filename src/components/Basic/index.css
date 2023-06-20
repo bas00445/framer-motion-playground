@@ -1,4 +1,6 @@
 .basic-anim {
+  color: white;
+  padding: 12px;
   animation: anim 1s forwards;
 }
 
