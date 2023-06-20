@@ -9,7 +9,7 @@ export default {
 };
 
 export const AnimateWithCSS = () => {
-  return <button className="basic-anim">CSS Only</button>;
+  return <button className="basic-an`im">CSS Only</button>;
 };
 
 export const AnimateOnly = () => {
@@ -40,8 +40,8 @@ export const BasicEvents = () => {
   return (
     <Container
       initial={{ background: "#666" }}
-      whileTap={{ scale: 1.2, background: "#000" }}
-      whileHover={{ scale: 1, background: "#333" }}
+      whileTap={{ scale: 1.2, background: "#371d9f" }}
+      whileHover={{ scale: 1, background: "#f4341a" }}
     >
       Click Me
     </Container>
