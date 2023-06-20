@@ -36,7 +36,7 @@ export const AnimateOnlyWithTransitionProps = () => {
   );
 };
 
-export const BasicEvents = () => {
+export const Events = () => {
   return (
     <Container
       initial={{ background: "#666" }}
