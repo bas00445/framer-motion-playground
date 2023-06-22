@@ -4,6 +4,11 @@ const svgr = require("vite-plugin-svgr");
 
 module.exports = {
   async viteFinal(config, { configType }) {
+    // fix: storybook not rendered anything when deploy to Github page
+    if (configType === "PRODUCTION") {
+      config.base = "./";
+    }
+
     // return the customized config
     return mergeConfig(config, {
       // customize the Vite config here
